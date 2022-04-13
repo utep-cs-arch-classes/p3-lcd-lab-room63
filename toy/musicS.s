@@ -1,10 +1,10 @@
 	.arch msp430g2553
 	.p2align 1,0
 	.text
-
-
-	.extern perdiod
-	.extern songT
+	.data 			; static variable songT.
+songT:	.word 1
+	
+	.extern perdiod	
 	.extern musicS 		; reference to musicS() function.
 
 jt:
