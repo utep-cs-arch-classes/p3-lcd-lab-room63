@@ -17,14 +17,26 @@ musicS:
 	jhs default		; jump if songT > 3
 
 	mov &songT, r12	
-	add r12, r12		; ; r12 = 2 * songT
+	add r12, r12		;
+				; r12 = 2 * songT
 	mov jt(r12), r0		; jump jt[songT]
 
 case_0:
 	mov #250, &period
-	mov #2, &songT		; songT = 0
+	mov #1, &songT		; songT = 0
 	jmp end			; break
 
+case_1:
+	mov #500, &period
+	mov #2, &songT		;songT =2
+	jmp end			;break
+
+case_2:
+	mov #750, &period
+	mov #0, &songT		;songT = 0
+	jmp end			;break
+
+	
 default:
 	mov #1000, &period
 	mov #1, &songT		;no break
