@@ -1,11 +1,10 @@
 	.arch msp430g2553
 	.p2align 1,0
 	.text
-	.data 			; static variable songT.
-songT:	.word 1
 	
 	.extern perdiod	
-	.extern musicS 		; reference to musicS() function.
+	.extern music 		; reference to music() function.
+	.extern songT 		; keep track of music state.
 
 jt:
 	.word case_0		; jt[0]
@@ -45,4 +44,7 @@ end:
 	mov &period, r12
 	call #buzzer_set_period ; call function buzzer_set_period
 	pop r0
+	
+
+
 	
