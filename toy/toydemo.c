@@ -5,7 +5,7 @@
 #include "draw_shapes.h"
 #include "switches.h"
 // WARNING: LCD DISPLAY USES P1.0.  Do not touch!!! 
-
+void buzzer_init();
 void update_shape();
 
 void main()
@@ -16,7 +16,7 @@ void main()
   configureClocks();
   lcd_init();
   switch_init();
-  
+  buzzer_init();
   enableWDTInterrupts();      /**< enable periodic interrupt */
   or_sr(0x8);	              /**< GIE (enable interrupts) */
   
@@ -24,12 +24,12 @@ void main()
   while (1) {			/* forever */
     if (redrawScreen) {
 
-      drawString5x7(14,5, "D: I need to pass 5x7", COLOR_GREEN, COLOR_BLACK);
+      drawString5x7(14,5, "D: I need to pass5x7", COLOR_GREEN, COLOR_BLACK);
       
-      drawString5x7(8, 120, "This is the best I can do", COLOR_GREEN, COLOR_BLACK);
-      drawString5x7(12, 140,"with a little time 5x7", COLOR_GREEN, COLOR_BLACK);
+      // drawString5x7(8, 120, "Where is the main?", COLOR_GREEN, COLOR_BLACK);
+      //drawString5x7(12, 140," I don't know 5x7", COLOR_GREEN, COLOR_BLACK);
       redrawScreen = 0;
-      update_shape();  //  update the new shape.
+      update_shape();  //  update the new shape(arrow).
     }
     P1OUT &= ~LED;	/* led off */
     or_sr(0x10);	/**< CPU OFF */
